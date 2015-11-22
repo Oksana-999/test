@@ -4,21 +4,16 @@
 //получает данные от модели и выдаёт моделям команды на изменение данных
 require __DIR__ . '/models/news.php';
 
-$items = News_getAll();//получаем все News из функции
-//print_r($items);  //отладка
-//echo date ('d-m-Y_H-i-s');// время и дата//echo"<br />";//echo date('Y-m-d H:i:s');//время и дата
-include __DIR__ . '/views/index.php';
+if (!isset($_GET['id'])) {
+    header('Location: index.php');
+    exit;
+}
 
-//include __DIR__ . '/views/show_news.php';
-
+if (isset($_GET['id'])) {
+    // echo $_GET['id'];die;  //отладка
+    $get = $_GET['id'];
+    $show = Selection_id($get);
+    //print_r ($show); die; //отладка
+}
+include __DIR__ . '/views/show_news.php';
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>Новостная лента</title>
-</head>
-<body>
-
-</body>
-</html>
